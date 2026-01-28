@@ -10,7 +10,8 @@
 			"moby": false
 		},
         "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {},
-		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {}
+		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {},
+		"ghcr.io/rails/devcontainer/features/sqlite3:1": {}
 	},
 	"customizations": {
 		"vscode": {
