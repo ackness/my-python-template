@@ -19,14 +19,15 @@
 				"ms-python.python",
 				"meta.pyrefly",
                 "ms-python.vscode-python-envs",
-                "yzhang.markdown-all-in-one"
+                "yzhang.markdown-all-in-one",
+				"charliermarsh.ruff"
 			],
 			"settings": {
 				"python.defaultInterpreterPath": "${containerEnv:VIRTUAL_ENV}/bin/python",
 				"python.linting.enabled": true,
 				"python.formatting.provider": "none",
 				"[python]": {
-					"editor.defaultFormatter": "meta.pyrefly",
+					"editor.defaultFormatter": "charliermarsh.ruff",
 					"editor.formatOnSave": true,
 					"editor.codeActionsOnSave": {
 						"source.organizeImports": "explicit",
