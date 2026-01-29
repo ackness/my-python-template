@@ -1,6 +1,6 @@
 {
 	"name": "Python + uv + Docker",
-	"image": "ackness/my-python-template/devcontainer:latest",
+	"image": "ghcr.io/ackness/my-python-template/devcontainer:latest",
 	"customizations": {
 		"vscode": {
 			"extensions": [
