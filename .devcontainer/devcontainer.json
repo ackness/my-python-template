@@ -2,16 +2,11 @@
 	"name": "Python + uv + Docker",
 	"image": "mcr.microsoft.com/devcontainers/python:3.13",
 	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-            "configureZshAsDefaultShell": true,
-			"installOhMyZsh": true
-        },
-		"ghcr.io/devcontainers/features/docker-in-docker:2": {
+		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
 			"moby": false
 		},
         "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {},
-		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {},
-		"ghcr.io/rails/devcontainer/features/sqlite3:1": {}
+		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {}
 	},
 	"customizations": {
 		"vscode": {
@@ -38,8 +33,5 @@
 		}
 	},
 	"postCreateCommand": "bash .devcontainer/post-create.sh",
-	"remoteUser": "vscode",
-	"mounts": [
-		"source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind"
-	]
+	"remoteUser": "vscode"
 }
