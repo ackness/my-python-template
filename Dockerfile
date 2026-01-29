@@ -18,4 +18,4 @@ COPY . .
 RUN --mount=type=cache,target=${UV_CACHE_DIR} \
     uv sync --locked
 
-CMD ["uv", "run", "python", "main.py"]
+CMD ["uv", "run", "my-python-template"]

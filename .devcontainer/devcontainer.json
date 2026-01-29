@@ -10,7 +10,8 @@
 			"moby": false
 		},
         "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {},
-		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {}
+		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {},
+		"ghcr.io/rails/devcontainer/features/sqlite3:1": {}
 	},
 	"customizations": {
 		"vscode": {
@@ -18,14 +19,15 @@
 				"ms-python.python",
 				"meta.pyrefly",
                 "ms-python.vscode-python-envs",
-                "yzhang.markdown-all-in-one"
+                "yzhang.markdown-all-in-one",
+				"charliermarsh.ruff"
 			],
 			"settings": {
 				"python.defaultInterpreterPath": "${containerEnv:VIRTUAL_ENV}/bin/python",
 				"python.linting.enabled": true,
 				"python.formatting.provider": "none",
 				"[python]": {
-					"editor.defaultFormatter": "meta.pyrefly",
+					"editor.defaultFormatter": "charliermarsh.ruff",
 					"editor.formatOnSave": true,
 					"editor.codeActionsOnSave": {
 						"source.organizeImports": "explicit",

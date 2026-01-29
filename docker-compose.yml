@@ -1,0 +1,13 @@
+services:
+  my-python-template:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: my-python-template
+    volumes:
+      - .:/app
+    environment:
+      - UV_CACHE_DIR=/root/.cache/uv
+      - UV_LINK_MODE=copy
+      - UV_COMPILE_BYTECODE=1
+    working_dir: /app
