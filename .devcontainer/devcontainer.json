@@ -1,13 +1,6 @@
 {
 	"name": "Python + uv + Docker",
-	"image": "mcr.microsoft.com/devcontainers/python:3.13",
-	"features": {
-		"ghcr.io/devcontainers/features/docker-outside-of-docker:1": {
-			"moby": false
-		},
-        "ghcr.io/devcontainer-community/devcontainer-features/astral.sh-uv:1": {},
-		"ghcr.io/eitsupi/devcontainer-features/jq-likes:2": {}
-	},
+	"image": "ackness/my-python-template/devcontainer:latest",
 	"customizations": {
 		"vscode": {
 			"extensions": [
