@@ -11,6 +11,8 @@
 				"charliermarsh.ruff"
 			],
 			"settings": {
+				"remote.containers.copyGitConfig": false,
+      			"dev.containers.copyGitConfig": false,
 				"python.defaultInterpreterPath": "${containerEnv:VIRTUAL_ENV}/bin/python",
 				"python.linting.enabled": true,
 				"python.formatting.provider": "none",
