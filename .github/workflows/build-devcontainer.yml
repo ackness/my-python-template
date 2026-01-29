@@ -9,7 +9,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ackness/prediction-agent/devcontainer
+  IMAGE_NAME: ackness/my-python-template/devcontainer
 
 jobs:
   build-and-push:
