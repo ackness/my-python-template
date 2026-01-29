@@ -1,11 +1,12 @@
 FROM debian:trixie-slim
 
-# Create vscode user with sudo
+# Create vscode user with sudo, install base tools
 RUN groupadd -g 1000 vscode \
     && useradd -m -s /bin/zsh -u 1000 -g 1000 vscode \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-        sudo git zsh curl ca-certificates gnupg jq \
+        sudo git zsh curl wget unzip ca-certificates gnupg jq openssh-client \
+        build-essential pkg-config libffi-dev libssl-dev libpq-dev \
     && echo "vscode ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/vscode \
     && rm -rf /var/lib/apt/lists/*
 
@@ -27,8 +28,12 @@ RUN install -dm 755 /etc/apt/keyrings \
     && apt-get install -y --no-install-recommends mise \
     && rm -rf /var/lib/apt/lists/*
 
-# Activate mise for both bash and zsh, install global uv
 USER vscode
+
+# Install oh-my-zsh
+RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
+
+# Activate mise in shell, install global tools
 RUN echo 'eval "$(mise activate bash)"' >> ~/.bashrc \
     && echo 'eval "$(mise activate zsh)"' >> ~/.zshrc \
     && mise use --global uv python

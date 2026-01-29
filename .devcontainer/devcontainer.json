@@ -1,5 +1,5 @@
 {
-	"name": "Python + uv + Docker",
+	"name": "Python Dev Container",
 	"image": "ghcr.io/ackness/my-python-template/devcontainer:latest",
 	"customizations": {
 		"vscode": {
