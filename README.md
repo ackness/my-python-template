@@ -58,6 +58,7 @@ tests/
 .gitignore
 mise.toml
 pyproject.toml
+README.md
 uv.lock
 ```
 
@@ -106,6 +107,11 @@ Pyrefly 已发布稳定版；模板使用 Pyrefly 作为唯一类型检查器。
 - Dependabot 每周提出 uv 和 GitHub Actions 更新 PR；不会自动合并。
 
 ## CI
+
+工作流定义在 [ci.yml](.github/workflows/ci.yml)，依赖更新策略定义在
+[dependabot.yml](.github/dependabot.yml)。Action 使用明确的发布版本，由 Dependabot 每周提出
+升级 PR；mise 本身使用 `latest`，uv 版本策略来自 `mise.toml`。
+`mise run upgrade` 只升级 uv 和 Python 项目依赖，不会修改 Action 版本或升级 mise 本身。
 
 GitHub Actions 在推送到 `main`、提交 PR 或手动触发时运行：
 
