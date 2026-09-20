@@ -28,8 +28,9 @@ Commands below run from the project root.
   build requirements, so validate builds after changing them.
 - **GitHub Actions:** query each used action's official repository for the latest suitable
   release; inspect breaking changes and runner requirements. Update the workflow and review
-  `.github/dependabot.yml`. Keep an explicit tag or commit reference; `version: latest` on
-  mise-action selects mise, not the version of the Action itself.
+  `.github/dependabot.yml`. Keep an explicit Action tag or commit reference. For the latest
+  mise release, omit mise-action's `version` input; an explicit value is a concrete mise
+  version, and the literal `latest` can produce a nonexistent `vlatest` download URL.
 
 For a request for "latest", verify current releases from official registries and upstream
 release pages. Do not promote a prerelease or switch type checkers silently. Routine locked
