@@ -1,0 +1,49 @@
+[tools]
+uv = "latest"
+
+[tasks.setup]
+description = "Install the locked project and development dependencies"
+run = "uv sync --locked"
+
+[tasks.run]
+description = "Run the application"
+run = "uv run --locked my-python-template"
+
+[tasks.fmt]
+description = "Apply safe lint fixes and format Python files"
+run = ["uv run --locked ruff check --fix .", "uv run --locked ruff format ."]
+
+[tasks.lint]
+description = "Check lint rules and formatting without changing files"
+run = ["uv run --locked ruff check .", "uv run --locked ruff format --check ."]
+
+[tasks.typecheck]
+description = "Check types with Pyrefly"
+run = "uv run --locked pyrefly check"
+
+[tasks.test]
+description = "Run the test suite"
+run = "uv run --locked pytest"
+
+[tasks.check]
+description = "Run the same quality checks as CI"
+run = [
+    "uv lock --check",
+    "mise run lint",
+    "mise run typecheck",
+    "mise run test",
+]
+
+[tasks.build]
+description = "Build a wheel and source distribution"
+run = "uv build --no-sources"
+
+[tasks.upgrade]
+description = "Upgrade uv and project dependencies, then validate"
+run = [
+    "mise upgrade uv",
+    "mise exec -- uv lock --upgrade",
+    "mise run setup",
+    "mise run check",
+    "mise run build",
+]
