@@ -16,6 +16,10 @@ mise run run
 
 检查使用 `mise run check`，格式化使用 `mise run fmt`，打包使用 `mise run build`。
 Python 和依赖由 uv 管理，无需手动激活 `.venv`。
+保留并提交 `uv.lock`，让日常开发与 CI 按锁文件安装依赖。
+
+需要更新 uv 和项目依赖时运行 `mise run upgrade`。Python、mise 本身及 Action 版本的
+更新方式见 [工具链维护技能](.agents/skills/maintain-toolchain/SKILL.md)，不由该命令一并升级。
 
 ## 用 agent 开始项目
 

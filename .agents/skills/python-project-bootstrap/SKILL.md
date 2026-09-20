@@ -15,6 +15,9 @@ Read the requested outcome and the current source, `pyproject.toml`, `mise.toml`
 Determine whether this is a fresh template or an existing application; preserve existing
 behavior and user changes in the latter. Ask only for missing product choices that block
 implementation, such as an unspecified purpose. Do not invent a product from the template.
+Use the fresh-checkout setup in AGENTS when needed. Initialization keeps the existing
+toolchain and lockfile unless the user's requirements call for changes; for requested
+upgrades, use [maintain-toolchain](../maintain-toolchain/SKILL.md).
 
 ## Adapt the skeleton
 
@@ -39,6 +42,8 @@ and examples. Add a secret-free environment example only if configuration is nee
 Retain this skill and AGENTS unless the user wants a different agent workflow; update any
 instructions made inaccurate by the implementation. Avoid copying template maintenance
 instructions into the product README.
+Keep product documentation focused on actual usage. Tool versions and CI settings should
+remain in their configuration files rather than a copied list of "latest" versions.
 
 For metadata or dependency changes, regenerate the lock with `mise exec -- uv lock`,
 then run `mise run setup`, `mise run check`, and `mise run build` as relevant to the new project.

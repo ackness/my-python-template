@@ -14,12 +14,15 @@ application. Keep durable agent guidance here and optional procedures in
 
 - Use mise for tool installation and task entry points. Use uv for Python discovery,
   `.venv`, dependencies, locking, and builds; avoid a second Python version setting in mise.
-- Read versions from `.python-version`, `pyproject.toml`, `uv.lock`, and `mise.toml`.
+- Read tool versions and task definitions from `mise.toml`, the development Python pin
+  from `.python-version`, and supported Python versions and dependency requirements from
+  `pyproject.toml`. `uv.lock` records resolved project dependencies. Action references and
+  update schedules live in `.github/workflows/ci.yml` and `.github/dependabot.yml`.
   Do not treat versions mentioned in prose as current releases.
 - Keep Python source under `src/` and tests under `tests/`. Derive the current package
   and CLI names from `pyproject.toml`; do not hardcode the original template name.
 - Ruff handles lint and formatting; Pyrefly is the single type checker; pytest runs tests.
-  Keep their configuration in `pyproject.toml` and caches under `.cache/`.
+  Keep their configuration in `pyproject.toml`; Ruff and pytest caches belong under `.cache/`.
 - Add runtime dependencies with `mise exec -- uv add PACKAGE` and development tools
   with `mise exec -- uv add --dev PACKAGE`. Commit the resulting `uv.lock` changes.
 - Additional JS/TS, Go, or Rust tools belong in `mise.toml` when the project needs them.
@@ -35,10 +38,14 @@ Use `mise exec -- uv ...` when shell activation is unavailable.
 - `mise run typecheck` / `mise run test`: focused type checks or tests.
 - `mise run check`: lockfile, lint, formatting, types, and tests; the shared CI entry point.
 - `mise run build`: wheel and source distribution; validate packaging changes with this.
+- `mise run upgrade`: intentionally upgrade uv and project dependencies, then check and build.
+  For scope and version-selection details, use the maintain-toolchain skill linked below.
 
 Use relevant checks for the change. Documentation-only edits need link and diff review,
 not a full application test run. Keep CI and local commands aligned in `mise.toml`.
-CI currently targets Windows and Linux; report remote CI as unrun unless it was observed.
+CI runs setup, check, and build on Windows and Linux for main pushes, pull requests,
+and manual dispatch. It does not publish packages or images. Report remote CI as unrun
+unless the relevant commit's run was observed; an older green run does not validate new changes.
 
 ## Tracked and local files
 
