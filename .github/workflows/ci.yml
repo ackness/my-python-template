@@ -24,7 +24,7 @@ jobs:
         os: [ubuntu-latest, windows-latest]
     steps:
       - uses: actions/checkout@v7.0.1
-      - uses: jdx/mise-action@v4.3.0
+      - uses: jdx/mise-action@v5.1.1
       - name: Install dependencies
         run: mise run setup
       - name: Check code and tests
