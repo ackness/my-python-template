@@ -31,11 +31,15 @@ Commands below run from the project root.
   build requirements, so validate builds after changing them.
 - **GitHub Actions:** query each used action's official repository for the latest suitable
   release; inspect breaking changes and runner requirements. Update the workflow and review
-  `.github/dependabot.yml`. Keep an explicit Action tag or commit reference. For the latest
-  mise release, omit mise-action's `version` input; an explicit value is a concrete mise
-  version, and the literal `latest` can produce a nonexistent `vlatest` download URL.
-  This differs from `uv = "latest"` in `mise.toml`, where `latest` is supported.
-  Dependabot currently proposes weekly uv and Action updates; it does not auto-merge them.
+  `.github/dependabot.yml`. Keep an explicit Action tag or commit reference. CI pins mise
+  itself with a concrete `version` input; update it to the verified stable release when mise
+  is in scope. Do not use the literal `latest` there: it can produce a nonexistent `vlatest`
+  download URL. Without a pin, mise-action v5 defaults to a 24-hour minimum release age and
+  reuses cached binaries. This differs from `uv = "latest"` in `mise.toml`, where `latest`
+  is supported.
+  Dependabot proposes weekly Python dependency and Action updates; its `uv` ecosystem
+  updates requirements and `uv.lock`, not the uv executable, mise itself, or `.python-version`.
+  It does not auto-merge updates. Review build-backend bounds separately on major/minor upgrades.
 
 For a request for "latest", verify current releases from official registries and upstream
 release pages. Do not promote a prerelease or switch type checkers silently. Routine locked

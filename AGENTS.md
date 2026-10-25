@@ -18,6 +18,7 @@ application. Keep durable agent guidance here and optional procedures in
   from `.python-version`, and supported Python versions and dependency requirements from
   `pyproject.toml`. `uv.lock` records resolved project dependencies. Action references and
   update schedules live in `.github/workflows/ci.yml` and `.github/dependabot.yml`.
+  CI pins mise itself through the action's `version` input; review that pin during upgrades.
   Do not treat versions mentioned in prose as current releases.
 - Keep Python source under `src/` and tests under `tests/`. Derive the current package
   and CLI names from `pyproject.toml`; do not hardcode the original template name.
